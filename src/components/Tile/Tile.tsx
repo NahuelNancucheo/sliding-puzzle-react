@@ -1,6 +1,7 @@
 import React from 'react';
 import { BG_IMG, BOARD_SIZE, GRID_SIZE, TILE_COUNT } from '../../utils/constants';
 import { getMatrixPosition, getVisualPosition } from '../../utils/helpers';
+import styles from './Tiles.module.css';
 
 
 interface IProps {
@@ -12,15 +13,15 @@ interface IProps {
 }
 
 export const Tile: React.FC<IProps> = ({ index, tile, width, height, handleTileClick }) => {
-    const {row, col} = getMatrixPosition(index, GRID_SIZE);
-    const visualPos = getVisualPosition(row, col, width, height);
+    const { row, col } = getMatrixPosition(index, GRID_SIZE);
+    const visualPosition = getVisualPosition(row, col, width, height);
 
     const tileStyle = {
         width:`calc(100% / ${GRID_SIZE})`,
         height:`calc(100% / ${GRID_SIZE})`,
         cursor:`pointer`,
-        translateX: visualPos.x,
-        translateY: visualPos.y,
+        translateX: visualPosition.x,
+        translateY: visualPosition.y,
         backgroundImage:`url(${BG_IMG})`,
         backgroundSize:`${BOARD_SIZE * 1.25}px`,
         backgroundPosition:`${(100 / GRID_SIZE) * (tile % GRID_SIZE)}% ${(100 / GRID_SIZE) * (Math.floor(tile / GRID_SIZE))}%`
@@ -28,7 +29,7 @@ export const Tile: React.FC<IProps> = ({ index, tile, width, height, handleTileC
 
     return (
         <li
-            className="tile"
+            className={styles.tile}
             style={{
                 ...tileStyle,
                 transform: `translate3d(${tileStyle.translateX}px, ${tileStyle.translateY}px, 0)`,
