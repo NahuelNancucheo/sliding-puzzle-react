@@ -77,7 +77,7 @@ export const Board: React.FC = () => {
                 <img src="https://cdn.wallpapersafari.com/2/3/8Tdtag.jpg" alt="preview"/>
                 {hasWon && isStarted && <h3>🎉 Puzzle solved! 🎉</h3>}
                 {!isStarted ? 
-                    (<button onClick={() => handleStartClick()}>Shuffle</button>) : 
+                    (<button onClick={() => handleStartClick()}>Shuffle and play</button>) : 
                     (<button onClick={() => handleShuffleClick()}>Shuffle again</button>)}
                 {/*!hasWon && isStarted && <button onClick={() => handleOrderClick()} >Resolve puzzle</button>*/}
             </div>
