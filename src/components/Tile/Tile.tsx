@@ -3,7 +3,6 @@ import { BG_IMG, BOARD_SIZE, GRID_SIZE, TILE_COUNT } from '../../utils/constants
 import { getMatrixPosition, getVisualPosition } from '../../utils/helpers';
 import styles from './Tiles.module.css';
 
-
 interface IProps {
     index: number
     tile: number
@@ -17,9 +16,6 @@ export const Tile: React.FC<IProps> = ({ index, tile, width, height, handleTileC
     const visualPosition = getVisualPosition(row, col, width, height);
 
     const tileStyle = {
-        width:`calc(100% / ${GRID_SIZE})`,
-        height:`calc(100% / ${GRID_SIZE})`,
-        cursor:`pointer`,
         translateX: visualPosition.x,
         translateY: visualPosition.y,
         backgroundImage:`url(${BG_IMG})`,

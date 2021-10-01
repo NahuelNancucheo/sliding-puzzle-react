@@ -46,6 +46,7 @@ export const Board: React.FC = () => {
     const handleStartClick = () => {
         shuffleTiles();
         setIsStarted(true);
+        if(count > 0) setCount(0);
     }
 
     //shuffle again
@@ -59,30 +60,33 @@ export const Board: React.FC = () => {
         setCount(0);
         setTiles([...Array(TILE_COUNT).keys()]);
     }
-
+    
     return (
-        <>
-            <h3>Moves: {count}</h3>
-            <ul className={styles.board} style={boardStyle}>
+        <div className={styles.boardContainer}>
+            <ul className={styles.board} >
                 {tiles.map((tile, index) => {
                     return (
-                    <Tile
+                        <Tile
                         key={tile}
                         index={index}
                         tile={tile}
                         width={pieceWidth}
                         height={pieceHeight}
                         handleTileClick={handleTileClick}
-                    />
-                )})}
+                        />
+                        )})}
             </ul> 
-
-            {hasWon && isStarted && <span>🎉🎉 Puzzle solved! 🎉🎉</span>}
-            {!isStarted ? 
-                (<button onClick={() => handleStartClick()}>Shuffle and start play</button>) : 
-                (<button onClick={() => handleShuffleClick()}>Shuffle again</button>)}
-            {/*!hasWon && isStarted && <button onClick={() => handleOrderClick()} >Resolve puzzle</button>*/}
-        </>
+            <div className={styles.previews}>
+                <h3>Moves: {count}</h3>
+                <h3>Preview: </h3>
+                <img src="https://cdn.wallpapersafari.com/2/3/8Tdtag.jpg"/>
+                {hasWon && isStarted && <h3>🎉 Puzzle solved! 🎉</h3>}
+                {!isStarted ? 
+                    (<button onClick={() => handleStartClick()}>Shuffle</button>) : 
+                    (<button onClick={() => handleShuffleClick()}>Shuffle again</button>)}
+                {/*!hasWon && isStarted && <button onClick={() => handleOrderClick()} >Resolve puzzle</button>*/}
+            </div>
+        </div>
     )
 }
 

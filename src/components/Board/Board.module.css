@@ -1,4 +1,27 @@
 .board {
     padding: 0;
+    width: 405px;
+    height: 405px;
     position: relative;
+    margin-right: 25px;
+}
+
+.boardContainer {
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+}
+
+.boardContainer img {
+    width: 100px;
+    height: 100px;
+}
+
+.previews {
+    height: 405px;
+    display: flex;
+    justify-content:space-evenly;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 25px;
 }
