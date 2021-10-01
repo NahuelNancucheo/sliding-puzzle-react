@@ -74,7 +74,7 @@ export const Board: React.FC = () => {
             <div className={styles.previews}>
                 <h3>Moves: {count}</h3>
                 <h3>Preview: </h3>
-                <img src="https://cdn.wallpapersafari.com/2/3/8Tdtag.jpg" alt="preview-image"/>
+                <img src="https://cdn.wallpapersafari.com/2/3/8Tdtag.jpg" alt="preview"/>
                 {hasWon && isStarted && <h3>🎉 Puzzle solved! 🎉</h3>}
                 {!isStarted ? 
                     (<button onClick={() => handleStartClick()}>Shuffle</button>) : 
