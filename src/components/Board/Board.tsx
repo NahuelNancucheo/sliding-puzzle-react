@@ -15,11 +15,6 @@ export const Board: React.FC = () => {
     const pieceWidth = Math.round(BOARD_SIZE / GRID_SIZE);
     const pieceHeight = Math.round(BOARD_SIZE / GRID_SIZE);
 
-    const boardStyle = {
-        width: BOARD_SIZE,
-        height: BOARD_SIZE
-    };
-
     //set shuffle tiles
     const shuffleTiles = () => {
         const shuffledTiles = shuffle(tiles)
@@ -79,7 +74,7 @@ export const Board: React.FC = () => {
             <div className={styles.previews}>
                 <h3>Moves: {count}</h3>
                 <h3>Preview: </h3>
-                <img src="https://cdn.wallpapersafari.com/2/3/8Tdtag.jpg"/>
+                <img src="https://cdn.wallpapersafari.com/2/3/8Tdtag.jpg" alt="preview-image"/>
                 {hasWon && isStarted && <h3>🎉 Puzzle solved! 🎉</h3>}
                 {!isStarted ? 
                     (<button onClick={() => handleStartClick()}>Shuffle</button>) : 
