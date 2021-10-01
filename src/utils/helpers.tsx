@@ -30,7 +30,7 @@ export function getMatrixPosition(index:number, GRID_SIZE:number) {
     };
 };
 
-//
+//get position to translate tiles
 export function getVisualPosition(row:number, col:number, width:number, height:number) {
     return {
       x: col * width,
