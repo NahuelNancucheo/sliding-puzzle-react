@@ -8,6 +8,7 @@ export const Board: React.FC = () => {
     const [tiles, setTiles] = useState<number[]>([...Array(TILE_COUNT).keys()]);
     const [isStarted, setIsStarted] = useState<boolean>(false);
     const [count, setCount] = useState<number>(0)
+
     const hasWon = isSolved(tiles)
    
     const pieceWidth = Math.round(BOARD_SIZE / GRID_SIZE);
@@ -18,14 +19,16 @@ export const Board: React.FC = () => {
         height: BOARD_SIZE
     };
 
+    //set shuffle tiles
     const shuffleTiles = () => {
         const shuffledTiles = shuffle(tiles)
         setTiles(shuffledTiles);
     }
-
+    
+    //swap function
     const swapTiles = (tileIndex:number) => {
         if(canSwap(tileIndex, tiles.indexOf(tiles.length - 1), GRID_SIZE)) {
-            console.log(tiles);
+            console.log('tiles estado: ', tiles);
             setCount(count + 1)
            const swappedTiles = swap(tiles, tileIndex, tiles.indexOf(tiles.length - 1));
            console.log(swappedTiles); 
@@ -33,20 +36,26 @@ export const Board: React.FC = () => {
            setTiles(swappedTiles);
         }
     }
-
+    
+    //handle click swap
     const handleTileClick = (index:number) => {
         swapTiles(index)
     }
 
-    const handleShuffleClick = () => {
-        shuffleTiles()
-    }
-
+    //first shuffle
     const handleStartClick = () => {
         shuffleTiles();
         setIsStarted(true);
     }
-    
+
+    //shuffle again
+    const handleShuffleClick = () => {
+        shuffleTiles()
+    }
+
+    const handleOrderClick = () => {
+        setTiles([...Array(TILE_COUNT).keys()])
+    }
 
     return (
         <>
@@ -69,6 +78,7 @@ export const Board: React.FC = () => {
             {!isStarted ? 
                 (<button onClick={() => handleStartClick()}>Shuffle</button>) : 
                 (<button onClick={() => handleShuffleClick()}>Shuffle again</button>)}
+            {/*!hasWon && isStarted && <button onClick={() => handleOrderClick()} >Resolve puzzle</button>*/}
         </>
     )
 }

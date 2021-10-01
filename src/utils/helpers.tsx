@@ -4,6 +4,7 @@ interface ITiles {
     tiles:number[]
 }
 
+//verifies if is solvable
 export function isSolvable(tiles:ITiles["tiles"]) {
     let product = 1;
     for(let i = 1, l=TILE_COUNT - 1; i<=l; i++) {
@@ -14,6 +15,7 @@ export function isSolvable(tiles:ITiles["tiles"]) {
     return Math.round(product) === 1;
 };
 
+//check index positions
 export function isSolved(tiles:ITiles["tiles"]) {
     for(let i=0, l = tiles.length; i<l;  i++) {
         if(tiles[i] !== i) {
@@ -55,14 +57,14 @@ export function shuffle(tiles:ITiles["tiles"]): number[] {
     return isSolvable(shuffledTiles) && !isSolved(shuffledTiles) ? shuffledTiles : shuffle(shuffledTiles)
 };
 
-//
+//true if can swap, false if cannot
 export function canSwap(src:number, dest:number, GRID_SIZE:number) {
     const { row: srcRow, col:srcCol} = getMatrixPosition(src, GRID_SIZE);
     const { row: destRow, col:destCol} = getMatrixPosition(dest, GRID_SIZE);
     return Math.abs(srcRow - destRow) + Math.abs(srcCol - destCol) === 1;
 };  
 
-//
+//swaps index positions
 export function swap(tiles:ITiles["tiles"], src:number, dest:number) {
     const tilesResult = [...tiles];
     [tilesResult[src], tilesResult[dest]] = [tilesResult[dest], tilesResult[src]];

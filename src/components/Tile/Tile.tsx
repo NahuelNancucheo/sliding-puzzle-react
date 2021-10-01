@@ -32,6 +32,7 @@ export const Tile: React.FC<IProps> = ({ index, tile, width, height, handleTileC
             style={{
                 ...tileStyle,
                 transform: `translate3d(${tileStyle.translateX}px, ${tileStyle.translateY}px, 0)`,
+                //last tile is hidden
                 opacity: tile === TILE_COUNT - 1 ? 0 : 1
             }}
             onClick={() => handleTileClick(index)}
