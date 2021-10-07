@@ -8,7 +8,7 @@
     width: 100%;
 }
 .footer a {
-    color:black;
+    color:rgb(255, 255, 255);
     font-weight: bold;
 }
 .footer a:hover {
